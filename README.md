@@ -1,3 +1,12 @@
+# Why fork?
+
+I still play Titan Quest, mainly on my notebook which runs Linux. Recently I wanted to 
+_"experiment"_ a bit, but I couldn't this app work on Linux properly. I recon the problem was 
+not the app itself but the UI framework, (Jetpack) Compose Multiplatform, which I know 
+nothing about. So I converted the code that makes the actual work to Java, slapped a lousy
+Swing UI, and called it a day. Actual credit goes to the original author.
+
+Below is the original README. This version of the app won't look like that.
 
 Titan Quest Mutator
 ===================

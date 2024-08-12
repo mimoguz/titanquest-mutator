@@ -1,6 +1,4 @@
-.gradle/
+.vscode/
 .idea/
-build/
-gradle/
-gradlew
-gradlew.bat
+target/
+
