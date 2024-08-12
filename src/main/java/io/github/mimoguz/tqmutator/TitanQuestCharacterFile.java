@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class TitanQuestCharacterFile {
+class TitanQuestCharacterFile {
 
     static final String MARKER_HEADER_VERSION = "headerVersion";
     static final String MARKER_PLAYER_LEVEL = "playerLevel";

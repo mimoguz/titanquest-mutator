@@ -1,6 +1,7 @@
 package io.github.mimoguz.tqmutator;
 
-public final class ByteUtils {
+class ByteUtils {
+
     public static int indexOf(byte[] haystack, byte[] needle) {
         if (needle == null || needle.length == 0) {
             return 0;
@@ -13,7 +14,7 @@ public final class ByteUtils {
         final var failure = new int[needle.length];
         failure[0] = -1;
         for (var j = 1; j < needle.length; j++) {
-            var i = failure[j -1];
+            var i = failure[j - 1];
             while (needle[j] != needle[i + 1] && i >= 0) {
                 i = failure[i];
             }
@@ -30,10 +31,11 @@ public final class ByteUtils {
             } else if (j == 0) {
                 i++;
             } else {
-                j = failure[j -1 ] + 1;
+                j = failure[j - 1] + 1;
             }
         }
 
         return j == needle.length ? i - needle.length : -1;
     }
+
 }
