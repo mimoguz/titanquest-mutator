@@ -17,7 +17,8 @@ import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 
-public class AppFrame extends JFrame {
+class AppFrame extends JFrame {
+
     private final JButton openButton = new JButton("Open save file");
     private final JButton saveButton = new JButton("Save changes");
     private final JPanel centrePanel = new JPanel();
@@ -134,4 +135,5 @@ public class AppFrame extends JFrame {
         }
 
     }
+
 }
