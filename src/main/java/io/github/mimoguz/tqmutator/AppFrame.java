@@ -2,6 +2,7 @@ package io.github.mimoguz.tqmutator;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.File;
 import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
@@ -14,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
+import javax.swing.filechooser.FileFilter;
 
 public class AppFrame extends JFrame {
     private final JButton openButton = new JButton("Open save file");
@@ -26,6 +28,7 @@ public class AppFrame extends JFrame {
     public AppFrame() {
         openButton.addActionListener(e -> {
             final var fileChooser = new JFileChooser();
+            fileChooser.setFileFilter(new ChrFilter());
             final var result = fileChooser.showOpenDialog(AppFrame.this);
             if (result == JFileChooser.APPROVE_OPTION) {
                 final var file = fileChooser.getSelectedFile();
@@ -104,5 +107,31 @@ public class AppFrame extends JFrame {
         public void warning(String msg) {
             output.setText(output.getText() + "\n" + "WARNING: " + msg);
         }
+    }
+
+    private static class ChrFilter extends FileFilter {
+
+        private static final String EXTENSION = "chr";
+        private static final String DESCRIPTION = "Titan Quest save file (*." + EXTENSION + ")";
+
+        @Override
+        public boolean accept(File f) {
+            return f.isDirectory() || getExtension(f).equals(EXTENSION);
+        }
+
+        @Override
+        public String getDescription() {
+            return DESCRIPTION;
+        }
+
+        private String getExtension(File f) {
+            final var name = f.getName();
+            final var dot = name.lastIndexOf('.');
+            if (dot > 0 && dot < name.length() - 1) {
+                return name.substring(dot + 1).toLowerCase();
+            }
+            return "";
+        }
+
     }
 }
