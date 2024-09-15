@@ -44,8 +44,9 @@ class AppFrame extends JFrame {
 
         saveButton.addActionListener(e -> {
             try {
-                if (characterFile != null)
+                if (characterFile != null) {
                     characterFile.save();
+                }
             } catch (Exception ex) {
                 logger.warning("Couldn't save file: " + ex.getMessage());
             }
@@ -81,12 +82,14 @@ class AppFrame extends JFrame {
 
         final var splitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT, centrePanel, logArea);
         splitPanel.setResizeWeight(1.0);
-        splitPanel.setDividerLocation(0.7);
+        splitPanel.setDividerLocation(0.8);
         splitPanel.setBorder(BorderFactory.createEmptyBorder());
+        splitPanel.setEnabled(true);
 
         final var content = getContentPane();
         content.add(buttonPanel, BorderLayout.NORTH);
         content.add(splitPanel, BorderLayout.CENTER);
+        setPreferredSize(new Dimension(400, 600));
         pack();
     }
 
